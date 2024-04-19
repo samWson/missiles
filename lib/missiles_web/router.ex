@@ -19,6 +19,7 @@ defmodule MissilesWeb.Router do
 
     get "/", PageController, :home
     resources "/games", GameController
+    resources "/ships", ShipController
   end
 
   # Other scopes may use custom stacks.
