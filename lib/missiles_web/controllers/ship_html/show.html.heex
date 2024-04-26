@@ -1,0 +1,11 @@
+<.header>
+  Ship <%= @ship.id %>
+  <:subtitle>This is a ship record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/ships/#{@ship}/edit"}>
+      <.button>Edit ship</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.back navigate={~p"/ships"}>Back to ships</.back>
