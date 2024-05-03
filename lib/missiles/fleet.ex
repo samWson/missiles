@@ -98,4 +98,20 @@ defmodule Missiles.Fleet do
     |> Ship.changeset(attrs)
     |> Repo.update()
   end
+
+  @doc """
+  Deletes a ship.
+
+  ## Examples
+
+      iex> delete_ship(ship)
+      {:ok, %Ship{}}
+
+      iex> delete_ship(ship)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_ship(%Ship{} = ship) do
+    Repo.delete(ship)
+  end
 end

@@ -64,4 +64,13 @@ defmodule MissilesWeb.ShipController do
         render(conn, :new, changeset: changeset)
     end
   end
+
+  def delete(conn, %{"id" => id}) do
+    ship = Fleet.get_ship!(id)
+    {:ok, _ship} = Fleet.delete_ship(ship)
+
+    conn
+    |> put_flash(:info, "Ship deleted successfully.")
+    |> redirect(to: ~p"/ships")
+  end
 end

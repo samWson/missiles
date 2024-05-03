@@ -10,4 +10,9 @@
 <.table id="ships" rows={@ships} row_click={&JS.navigate(~p"/ships/#{&1}")}>
   <:col :let={ship} label="Name"><%= ship.name %></:col>
   <:col :let={ship} label="Category"><%= ship.category %></:col>
+  <:action :let={ship}>
+    <.link href={~p"/ships/#{ship}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
 </.table>
