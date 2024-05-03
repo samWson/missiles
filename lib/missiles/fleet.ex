@@ -80,4 +80,22 @@ defmodule Missiles.Fleet do
   def change_ship(%Ship{} = ship, attrs \\ %{}) do
     Ship.changeset(ship, attrs)
   end
+
+  @doc """
+  Updates a ship.
+
+  ## Examples
+
+      iex> update_ship(ship, @{field: value})
+      {:ok, ship}
+
+      iex> update_ship(ship, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_ship(%Ship{} = ship, attrs) do
+    ship
+    |> Ship.changeset(attrs)
+    |> Repo.update()
+  end
 end

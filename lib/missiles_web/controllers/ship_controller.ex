@@ -41,4 +41,27 @@ defmodule MissilesWeb.ShipController do
 
     render(conn, :show, ship: ship)
   end
+
+  def edit(conn, %{"id" => id}) do
+    ship = Fleet.get_ship!(id)
+
+    form = Fleet.change_ship(ship)
+    |> to_form()
+
+    render(conn, :edit, ship: ship, form: form)
+  end
+
+  def update(conn, %{"id" => id, "ship" => ship_params}) do
+    ship = Fleet.get_ship!(id)
+
+    case Fleet.update_ship(ship, ship_params) do
+      {:ok, ship} ->
+        conn
+        |> put_flash(:info, "Ship updated successfully.")
+        |> redirect(to: ~p"/ships/#{ship}")
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, :new, changeset: changeset)
+    end
+  end
 end

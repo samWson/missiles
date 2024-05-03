@@ -1,0 +1,8 @@
+<.header>
+  Edit Ship <%= @ship.id %>
+  <:subtitle>Use this form to manage ship records in your database.</:subtitle>
+</.header>
+
+<.ship_form form={@form} action={~p"/ships/#{@ship}"} />
+
+<.back navigate={~p"/ships"}> Back to ships</.back>
