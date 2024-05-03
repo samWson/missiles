@@ -44,6 +44,7 @@ defmodule MissilesWeb do
 
       import Plug.Conn
       import MissilesWeb.Gettext
+      import Phoenix.Component
 
       unquote(verified_routes())
     end

@@ -1,6 +1,13 @@
 <.header>
   Ship <%= @ship.id %>
+
   <:subtitle>This is a ship record from your database.</:subtitle>
+
+  <.list>
+    <:item title="Name"><%= @ship.name %></:item>
+    <:item title="Category"><%= @ship.category %></:item>
+  </.list>
+
   <:actions>
     <.link href={~p"/ships/#{@ship}/edit"}>
       <.button>Edit ship</.button>

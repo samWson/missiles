@@ -24,7 +24,7 @@ defmodule Missiles.Fleet.Ship do
   """
   def changeset(ship, attrs) do
     ship
-    |> cast(attrs, [])
-    |> validate_required([]) # In this case there are no required fields.
+    |> cast(attrs, [:name, :category])
+    |> validate_required([:name, :category])
   end
 end

@@ -1,7 +1,6 @@
-<.simple_form :let={f} for={@changeset} action={@action}>
-  <.error :if={@changeset.action}>
-    Oops, something went wrong! Please check the errors below.
-  </.error>
+<.simple_form for={@form} action={@action}>
+  <.input field={@form[:name]} label="Name"/>
+  <.input field={@form[:category]} label="Category"/>
 
   <:actions>
     <.button>Save Game</.button>

@@ -18,13 +18,14 @@ defmodule MissilesWeb.ShipController do
   end
 
   def new(conn, _params) do
-    changeset = Fleet.change_ship(%Ship{})
+    form = Fleet.change_ship(%Ship{})
+    |> to_form()
 
-    render(conn, :new, changeset: changeset)
+    render(conn, :new, form: form)
   end
 
-  def create(conn, params) do
-    case Fleet.create_ship(params) do
+  def create(conn, %{"ship" => ship}) do
+    case Fleet.create_ship(ship) do
       {:ok, ship} ->
         conn
         |> put_flash(:info, "Ship created successfully.")
