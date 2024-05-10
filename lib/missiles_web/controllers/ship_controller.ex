@@ -8,24 +8,24 @@ defmodule MissilesWeb.ShipController do
 
   use MissilesWeb, :controller
 
-  alias Missiles.Fleet
-  alias Missiles.Fleet.Ship
+  alias Missiles.Ships
+  alias Missiles.Ships.Ship
 
   def index(conn, _params) do
-    ships = Fleet.list_ships()
+    ships = Ships.list_ships()
 
     render(conn, :index, ships: ships)
   end
 
   def new(conn, _params) do
-    form = Fleet.change_ship(%Ship{})
+    form = Ships.change_ship(%Ship{})
     |> to_form()
 
     render(conn, :new, form: form)
   end
 
   def create(conn, %{"ship" => ship}) do
-    case Fleet.create_ship(ship) do
+    case Ships.create_ship(ship) do
       {:ok, ship} ->
         conn
         |> put_flash(:info, "Ship created successfully.")
@@ -37,24 +37,24 @@ defmodule MissilesWeb.ShipController do
   end
 
   def show(conn, %{"id" => id}) do
-    ship = Fleet.get_ship!(id)
+    ship = Ships.get_ship!(id)
 
     render(conn, :show, ship: ship)
   end
 
   def edit(conn, %{"id" => id}) do
-    ship = Fleet.get_ship!(id)
+    ship = Ships.get_ship!(id)
 
-    form = Fleet.change_ship(ship)
+    form = Ships.change_ship(ship)
     |> to_form()
 
     render(conn, :edit, ship: ship, form: form)
   end
 
   def update(conn, %{"id" => id, "ship" => ship_params}) do
-    ship = Fleet.get_ship!(id)
+    ship = Ships.get_ship!(id)
 
-    case Fleet.update_ship(ship, ship_params) do
+    case Ships.update_ship(ship, ship_params) do
       {:ok, ship} ->
         conn
         |> put_flash(:info, "Ship updated successfully.")
@@ -66,8 +66,8 @@ defmodule MissilesWeb.ShipController do
   end
 
   def delete(conn, %{"id" => id}) do
-    ship = Fleet.get_ship!(id)
-    {:ok, _ship} = Fleet.delete_ship(ship)
+    ship = Ships.get_ship!(id)
+    {:ok, _ship} = Ships.delete_ship(ship)
 
     conn
     |> put_flash(:info, "Ship deleted successfully.")

@@ -1,4 +1,4 @@
-defmodule Missiles.Fleet.Ship do
+defmodule Missiles.Ships.Ship do
   @moduledoc """
   This the ship schema. It is an Ecto.Schema so it defines a mapping external
   data to a struct.

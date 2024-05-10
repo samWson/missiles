@@ -1,6 +1,6 @@
-defmodule Missiles.Fleet do
+defmodule Missiles.Ships do
   @moduledoc """
-  The Fleet context. Contexts expose and group related functionality. In
+  The Ships context. Contexts expose and group related functionality. In
   Phoenix they might:
   - encapsulate data access and validation
   - talk to a database or an API
@@ -8,8 +8,7 @@ defmodule Missiles.Fleet do
 
   https://hexdocs.pm/phoenix/1.7.10/contexts.html
 
-  In this case all the CRUD actions of ships are here. A Fleet has many ships
-  so Fleet is the context.
+  In this case all the CRUD actions of ships are here.
 
   From the contexts guide:
   Naming things is hard. If you're stuck when trying to come up with a context
@@ -21,7 +20,7 @@ defmodule Missiles.Fleet do
   """
 
   alias Missiles.Repo
-  alias Missiles.Fleet.Ship
+  alias Missiles.Ships.Ship
 
   @doc """
   Returns the list of ships.
