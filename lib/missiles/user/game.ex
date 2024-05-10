@@ -11,7 +11,7 @@ defmodule Missiles.Games.Game do
   @doc false
   def changeset(game, attrs) do
     game
-    |> cast(attrs, [])
-    |> validate_required([])
+    |> cast(attrs, [:player])
+    |> validate_required([:player])
   end
 end

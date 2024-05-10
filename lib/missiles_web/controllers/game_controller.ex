@@ -6,16 +6,19 @@ defmodule MissilesWeb.GameController do
 
   def index(conn, _params) do
     games = Games.list_games()
+
     render(conn, :index, games: games)
   end
 
   def new(conn, _params) do
-    changeset = Games.change_game(%Game{})
-    render(conn, :new, changeset: changeset)
+    form = Games.change_game(%Game{})
+    |> to_form()
+
+    render(conn, :new, form: form)
   end
 
-  def create(conn, %{"game" => game_params}) do
-    case Games.create_game(game_params) do
+  def create(conn, %{"game" => game}) do
+    case Games.create_game(game) do
       {:ok, game} ->
         conn
         |> put_flash(:info, "Game created successfully.")
@@ -33,8 +36,11 @@ defmodule MissilesWeb.GameController do
 
   def edit(conn, %{"id" => id}) do
     game = Games.get_game!(id)
-    changeset = Games.change_game(game)
-    render(conn, :edit, game: game, changeset: changeset)
+
+    form = Games.change_game(game)
+    |> to_form()
+
+    render(conn, :edit, game: game, form: form)
   end
 
   def update(conn, %{"id" => id, "game" => game_params}) do
