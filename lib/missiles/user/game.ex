@@ -1,4 +1,4 @@
-defmodule Missiles.User.Game do
+defmodule Missiles.Games.Game do
   use Ecto.Schema
   import Ecto.Changeset
 

@@ -1,12 +1,12 @@
-defmodule Missiles.User do
+defmodule Missiles.Games do
   @moduledoc """
-  The User context.
+  The Games context.
   """
 
   import Ecto.Query, warn: false
   alias Missiles.Repo
 
-  alias Missiles.User.Game
+  alias Missiles.Games.Game
 
   @doc """
   Returns the list of games.
