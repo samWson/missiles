@@ -3,7 +3,7 @@ defmodule Missiles.Games.Game do
   import Ecto.Changeset
 
   schema "games" do
-
+    field :player, :string
 
     timestamps(type: :utc_datetime)
   end
