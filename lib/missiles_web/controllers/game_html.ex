@@ -4,7 +4,8 @@ defmodule MissilesWeb.GameHTML do
   embed_templates "game_html/*"
 
   @doc """
-  Renders a game form.
+  Renders a game form, which is defined in:
+  lib/missiles_web/controllers/game_html/game_form.html.heex
   """
   attr :changeset, Ecto.Changeset, required: true
   attr :action, :string, required: true
