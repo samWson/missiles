@@ -6,7 +6,7 @@ defmodule MissilesWeb.ShipHTML do
   @doc """
   Renders a game form.
   """
-  attr :changeset, Ecto.Changeset, required: true
+  attr :form, Phoenix.HTML.Form, required: true
   attr :action, :string, required: true
 
   def ship_form(assigns)
