@@ -16,6 +16,15 @@
 </.header>
 
 <.input type="textarea" name="log" value="Click 'Next turn' to begin" readonly/>
-<.button>Next turn</.button>
+
+<.simple_form for={@form} action={~p"/games/#{@game}"}>
+  <.input field={@form[:next_turn]} value="true" type="hidden"/>
+
+  <:actions>
+    <.link href={~p"/games/#{@game}"}>
+      <.button>Next turn</.button>
+    </.link>
+  </:actions>
+</.simple_form>
 
 <.back navigate={~p"/games"}>Back to games</.back>

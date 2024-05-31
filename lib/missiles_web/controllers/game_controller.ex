@@ -31,7 +31,11 @@ defmodule MissilesWeb.GameController do
 
   def show(conn, %{"id" => id}) do
     game = Games.get_game!(id)
-    render(conn, :show, game: game)
+
+    form = Games.change_game(game)
+    |> to_form()
+
+    render(conn, :show, game: game, form: form)
   end
 
   def edit(conn, %{"id" => id}) do
@@ -41,6 +45,22 @@ defmodule MissilesWeb.GameController do
     |> to_form()
 
     render(conn, :edit, game: game, form: form)
+  end
+
+  def update(conn, %{"id" => id, "game" => %{"next_turn" => next_turn}}) do
+    game = Games.get_game!(id)
+
+    if next_turn == "true" do
+      case Games.update_game(game, %{turn: game.turn + 1}) do
+        {:ok, game} ->
+          conn
+          |> put_flash(:info, "Game updated successfully.")
+          |> redirect(to: ~p"/games/#{game}")
+
+        {:error, %Ecto.Changeset{} = changeset} ->
+          render(conn, :edit, game: game, changeset: changeset)
+      end
+    end
   end
 
   def update(conn, %{"id" => id, "game" => game_params}) do
