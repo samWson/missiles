@@ -1,5 +1,6 @@
 <.simple_form for={@form} action={@action}>
   <.input field={@form[:player]} label="Player"/>
+  <.input field={@form[:turn]} label="Turn" type="number"/>
 
   <:actions>
     <.button>Save Game</.button>
